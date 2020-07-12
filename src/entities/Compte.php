@@ -1,34 +1,45 @@
 <?php
-use Doctrine\ORM\Annotation as ORM;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity @Table(name="Compte")
+ * @ORM\Entity
+ * @ORM\Table(name="Compte")
  **/
 class Compte {
-    /** @Id @Column(type="integer") @GeneratedValue **/
+    /**
+     * @ORM\idC
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
     private $idC;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $numagence;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $cleRib;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $NumCompte;
     /**
      * Many Compte have one ClientPhysique. This is the owning side.
-     * @ManyToOne(targetEntity="ClientPhysique", inversedBy="Comptes")
-     * @JoinColumn(name="ClientPhysique_id", referencedColumnName="idClientPhysique")
+     * @ORM\ManyToOne(targetEntity="ClientPhysique", inversedBy="Comptes")
+     * @ORM\JoinColumn(name="ClientPhysique_id", referencedColumnName="idClientPhysique")
      */
     private $clientPhysique;
     /**
      * Many Compte have one ClientMoral. This is the owning side.
-     * @ManyToOne(targetEntity="ClientMoral", inversedBy="Comptes")
-     * @JoinColumn(name="ClientMoral_id", referencedColumnName="idClientMoral")
+     * @ORM\ManyToOne(targetEntity="ClientMoral", inversedBy="Comptes")
+     * @ORM\JoinColumn(name="ClientMoral_id", referencedColumnName="idClientMoral")
      */
     private $clientMoral;
     /**
      * Many Comptes have Many TypeComptes.
-     * @ManyToMany(targetEntity="TypeCompte", mappedBy="Comptes")
+     * @ORM\ManyToMany(targetEntity="TypeCompte", mappedBy="Comptes")
      */
     private $TypeComptes;
 
@@ -48,14 +59,14 @@ class Compte {
     public function getNumCompte() {
         return $this->NumCompte;
     }
-    public function getIdClientPhysique() {
-        return $this->idClientPhysique;
+    public function getClientPhysique() {
+        return $this->clientPhysique;
     }
-    public function getIdClientMoral() {
-        return $this->idClientMoral;
+    public function getClientMoral() {
+        return $this->clientMoral;
     }
-    public function getIdTypeCompte() {
-        return $this->idTypeCompte;
+    public function getTypeComptes() {
+        return $this->TypeComptes;
     }
 
     //setteurs
@@ -71,14 +82,14 @@ class Compte {
     public function setNumCompte($NumCompte) {
         $this->NumCompte = $NumCompte;
     }
-    public function setIdClientPhysique($idClientPhysique) {
-        $this->idClientPhysique = $idClientPhysique;
+    public function setClientPhysique($clientPhysique) {
+        $this->clientPhysique = $clientPhysique;
     }
-    public function setIdClientMoral($idClientMoral) {
-        $this->idClientMoral = $idClientMoral;
+    public function setClientMoral($clientMoral) {
+        $this->clientMoral = $clientMoral;
     }
-    public function setIdTypeCompte($idTypeCompte) {
-        $this->idTypeCompte = $idTypeCompte;
+    public function setTypeComptes($TypeComptes) {
+        $this->TypeComptes = $TypeComptes;
     }
 }
 ?>

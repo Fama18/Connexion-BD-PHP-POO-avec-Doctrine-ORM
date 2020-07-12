@@ -1,18 +1,25 @@
 <?php
-use Doctrine\ORM\Annotation as ORM;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @Entity @Table(name="TypeCompte")
+ * @ORM\Entity
+ * @ORM\Table(name="TypeCompte")
  **/
 class TypeCompte {
-    /** @Id @Column(type="integer") @GeneratedValue **/
+    /**
+     * @ORM\idTypeCompte
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
     private $idTypeCompte;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $libelle;
     /**
      * Many TypeCompte have Many Comptes.
-     * @ManyToMany(targetEntity="Compte", inversedBy="TypeComptes")
-     * @JoinTable(name="TypeCompte_Compte")
+     * @ORM\ManyToMany(targetEntity="Compte", inversedBy="TypeComptes")
+     * @ORM\JoinTable(name="TypeCompte_Compte")
      */
     private $Comptes;
 
@@ -26,6 +33,9 @@ class TypeCompte {
     public function getLibelle() {
         return $this->libelle;
     }
+    public function getComptes() {
+        return $this->Comptes;
+    }
 
     //setteurs
     public function setIdTypeCompte($idTypeCompte) {
@@ -33,6 +43,9 @@ class TypeCompte {
     }
     public function setLibelle($libelle) {
         $this->libelle = $libelle;
+    }
+    public function setComptes($Comptes) {
+        $this->Comptes = $Comptes;
     }
 }
 ?>

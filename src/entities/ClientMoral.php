@@ -1,29 +1,42 @@
 <?php
-use Doctrine\ORM\Annotation as ORM;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity @Table(name="ClientMoral")
+ * @ORM\Entity
+ * @ORM\Table(name="ClientMoral")
  **/
 class ClientMoral {
-    /** @Id @Column(type="integer") @GeneratedValue **/
+    /**
+     * @ORM\idClientMoral
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
     private $idClientMoral;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $nomEmployeur;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $AdresseEmployeur;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $raisonSocial;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $numIdent;
     /**
      * One ClientMoral has many ClientPhysiques. This is the inverse side.
-     * @OneToMany(targetEntity="ClientPhysique", mappedBy="clientMoral")
+     * @ORM\OneToMany(targetEntity="ClientPhysique", mappedBy="clientMoral")
      */
     private $ClientPhysiques;
     /**
      * One ClientMoral has many Comptes. This is the inverse side.
-     * @OneToMany(targetEntity="Compte", mappedBy="clientMoral")
+     * @ORM\OneToMany(targetEntity="Compte", mappedBy="clientMoral")
      */
     private $Comptes;
 
@@ -47,6 +60,13 @@ class ClientMoral {
     public function getNumIdent() {
         return $this->numIdent;
     }
+    public function getClientPhysiques() {
+        return $this->ClientPhysiques;
+    }
+    public function getComptes() {
+        return $this->Comptes;
+    }
+
 
     //setteurs
     public function setIdClientMoral($idClientMoral) {
@@ -64,6 +84,11 @@ class ClientMoral {
     public function setNumIdent($numIdent) {
         $this->numIdent = $numIdent;
     }
-
+    public function setClientPhysiques($ClientPhysiques) {
+        $this->ClientPhysiques = $ClientPhysiques;
+    }
+    public function setComptes($Comptes) {
+        $this->Comptes = $Comptes;
+    }
 }
 ?>

@@ -1,38 +1,59 @@
 <?php
-use Doctrine\ORM\Annotation as ORM;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity @Table(name="ClientPhysique")
+ * @ORM\Entity
+ * @ORM\Table(name="ClientPhysique")
  **/
 class ClientPhysique {
-    /** @Id @Column(type="integer") @GeneratedValue **/
+    /**
+     * @ORM\idClientPhysique
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
     private $idClientPhysique;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $numCni;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $nom;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $prenom;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $civilite;
-    /** @Column(type="Date") **/
+   /**
+     * @ORM\Column(type="datetime")
+     */
     private $DateDeNaissance;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $adresse;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $email;
-    /** @Column(type="string") **/
+    /**
+     * @ORM\Column(type="string")
+     */
     private $telephone;
      /**
      * Many ClientPhysique have one ClientMoral. This is the owning side.
-     * @ManyToOne(targetEntity="ClientMoral", inversedBy="ClientPhysiques")
-     * @JoinColumn(name="ClientMoral_id", referencedColumnName="idClientMoral")
+     * @ORM\ManyToOne(targetEntity="ClientMoral", inversedBy="ClientPhysiques")
+     * @ORM\JoinColumn(name="ClientMoral_id", referencedColumnName="idClientMoral")
      */
     private $clientMoral;
     /**
      * One ClientPhysique has many Comptes. This is the inverse side.
-     * @OneToMany(targetEntity="Compte", mappedBy="clientPhysique")
+     * @ORM\OneToMany(targetEntity="Compte", mappedBy="clientPhysique")
      */
     private $Comptes;
 
@@ -96,11 +117,17 @@ class ClientPhysique {
     public function setTelephone($telephone) {
         $this->telephone = $telephone;
     }
-    public function getIdClientMoral() {
-        return $this->idClientMoral;
+    public function getClientMoral() {
+        return $this->clientMoral;
     }
-    public function setIdClientMoral($idClientMoral) {
-        $this->idClientMoral = $idClientMoral;
+    public function setClientMoral($clientMoral) {
+        $this->clientMoral = $clientMoral;
+    }
+    public function getComptes() {
+        return $this->Comptes;
+    }
+    public function setComptes($Comptes) {
+        $this->Comptes = $Comptes;
     }
 
 }
