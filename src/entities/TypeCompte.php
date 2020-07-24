@@ -7,11 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  **/
 class TypeCompte {
     /**
-     * @ORM\idTypeCompte
+     * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
-    private $idTypeCompte;
+    private $id;
     /**
      * @ORM\Column(type="string")
      */
@@ -27,8 +27,8 @@ class TypeCompte {
         $this->Comptes = new ArrayCollection();
     }
     //getteurs
-    public function getIdTypeCompte() {
-        return $this->idTypeCompte;
+    public function getId() {
+        return $this->id;
     }
     public function getLibelle() {
         return $this->libelle;
@@ -38,8 +38,8 @@ class TypeCompte {
     }
 
     //setteurs
-    public function setIdTypeCompte($idTypeCompte) {
-        $this->idTypeCompte = $idTypeCompte;
+    public function setId($id) {
+        $this->id = $id;
     }
     public function setLibelle($libelle) {
         $this->libelle = $libelle;

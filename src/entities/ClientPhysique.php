@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  **/
 class ClientPhysique {
     /**
-     * @ORM\idClientPhysique
+     * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */

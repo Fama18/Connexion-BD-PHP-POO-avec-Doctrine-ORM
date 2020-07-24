@@ -8,11 +8,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  **/
 class Compte {
     /**
-     * @ORM\idC
+     * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
-    private $idC;
+    private $id;
     /**
      * @ORM\Column(type="string")
      */
@@ -47,8 +47,8 @@ class Compte {
         $this->TypeComptes = new ArrayCollection();
     }
      //getteurs
-    public function getIdC() {
-        return $this->idC;
+    public function getId() {
+        return $this->id;
     }
      public function getNumAgence() {
         return $this->numagence;
@@ -70,8 +70,8 @@ class Compte {
     }
 
     //setteurs
-    public function setIdC($idC) {
-        $this->idC = $idC;
+    public function setId($id) {
+        $this->id = $id;
     }
     public function setNumAgence($numagence) {
         $this->numagence = $numagence;
