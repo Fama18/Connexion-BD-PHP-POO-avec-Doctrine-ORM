@@ -30,7 +30,7 @@ class ClientPhysique {
      */
     private $civilite;
    /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      */
     private $DateDeNaissance;
     /**
