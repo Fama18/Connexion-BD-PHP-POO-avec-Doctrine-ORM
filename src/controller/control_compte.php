@@ -8,9 +8,12 @@
 
     $compte = new Compte();
 
+    $clientPhysique = $entityManager->find("ClientPhysique", $idClientPhysique);
+
     $compte->setNumAgence($numagence);
     $compte->setCleRib($cleRib);
     $compte->setNumCompte($NumCompte);
+    $compte->setClientPhysique($clientPhysique);
 
     $entityManager->persist($compte);
     $entityManager->flush();
